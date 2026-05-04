@@ -9,7 +9,7 @@ Personal configuration files for my Fedora Linux setup, version-controlled so I 
 | Terminal             | Ghostty     |             
 | Shell                | Zsh         |              
 | Terminal Multiplexer | Tmux        |      
-| Top Bar              | Waybar      |        
+| Status Bar           | Waybar      |        
 | Window Manager       | Wayland     | 
 | IDE                  | Zed         |
 
