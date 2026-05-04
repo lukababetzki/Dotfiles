@@ -11,19 +11,24 @@ Personal configuration files for my Fedora Linux setup, version-controlled so I 
 | Terminal Multiplexer | Tmux        |      
 | Top Bar              | Waybar      |        
 | Window Manager       | Wayland     | 
-| Font                 | Terminus    |
-| IDE                  | Zed         | 
+| IDE                  | Zed         |
 
 
 ## Repository Structure
 
 ```
 dotfiles/
-├── ghostty/          # Ghostty terminal config
-├── zsh/              # Zsh shell config (.zshrc, .zprofile, etc.)
-├── tmux/             # Tmux config
-├── waybar/           # Waybar top bar config & styles
-├── wayland/          # Wayland compositor config
-├── fonts/            # Terminus font files
-└── zed/              # Zed IDE settings
+├── ghostty/
+│   └── config
+├── zsh/
+│   └── .zshrc
+├── tmux/
+│   └── tmux.conf
+├── waybar/
+│   ├── config.jsonc
+│   └── style.css
+├── wayland/
+│   └── config
+└── zed/
+    └── settings.json
 ```
