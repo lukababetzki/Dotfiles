@@ -50,7 +50,7 @@ zstyle ':completion:*:descriptions' format '%F{cyan}%d%f'
 # or manually: https://github.com/sindresorhus/pure
 # -----------------------------------------------------------------------------
 
-fpath+=("$(brew --prefix)/share/zsh/site-functions" /usr/share/zsh/site-functions)
+fpath+=(~/.zsh/pure /usr/share/zsh/site-functions)
 autoload -U promptinit
 promptinit
 prompt pure
