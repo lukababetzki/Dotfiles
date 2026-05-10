@@ -1,0 +1,17 @@
+# =============================================================================
+# ansible/roles/shell/tasks/main.yml
+# =============================================================================
+# Sets Zsh as the default shell for the current user.
+# =============================================================================
+
+---
+- name: Get current user
+  command: whoami
+  register: current_user
+  changed_when: false
+
+- name: Set Zsh as default shell
+  become: true
+  user:
+    name: "{{ current_user.stdout }}"
+    shell: /bin/zsh

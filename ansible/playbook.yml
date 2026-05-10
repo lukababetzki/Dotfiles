@@ -1,0 +1,26 @@
+# =============================================================================
+# ansible/playbook.yml
+# =============================================================================
+# Bootstraps a Fedora machine with the full dotfiles environment.
+#
+# Usage:
+#   sudo dnf install ansible -y
+#   ansible-playbook ansible/playbook.yml --ask-become-pass
+# =============================================================================
+
+---
+- name: Bootstrap dotfiles environment
+  hosts: localhost
+  connection: local
+  become: false
+
+  vars:
+    dotfiles_dir: "{{ ansible_env.HOME }}/dotfiles"
+    config_dir: "{{ ansible_env.HOME }}/.config"
+    zsh_pure_dir: "{{ ansible_env.HOME }}/.zsh/pure"
+    screenshots_dir: "{{ ansible_env.HOME }}/Pictures/screenshots"
+
+  roles:
+    - packages
+    - dotfiles
+    - shell

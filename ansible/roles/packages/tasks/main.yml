@@ -1,0 +1,66 @@
+# =============================================================================
+# ansible/roles/packages/tasks/main.yml
+# =============================================================================
+# Installs all dependencies via dnf.
+# Ghostty is installed via COPR as it is not yet in Fedora main repos.
+# =============================================================================
+
+---
+- name: Enable Ghostty COPR repo
+  become: true
+  command: dnf copr enable -y pgdev/ghostty
+  args:
+    creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:pgdev:ghostty.repo
+
+- name: Install all packages
+  become: true
+  dnf:
+    name:
+      # Window manager + bar
+      - sway
+      - waybar
+      - swaylock
+      - swaybg
+
+      # Terminal
+      - ghostty
+
+      # Notifications
+      - swaynotificationcenter
+
+      # Launcher
+      - wmenu
+
+      # Screenshots
+      - grim
+      - slurp
+
+      # Media + brightness + volume
+      - playerctl
+      - brightnessctl
+      - pavucontrol
+
+      # Shell
+      - zsh
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+
+      # Fonts
+      - terminus-fonts
+
+      # Wayland utilities
+      - wl-clipboard
+      - xdg-utils
+      - xdg-user-dirs
+
+      # Polkit agent
+      - polkit-gnome
+
+      # Network
+      - network-manager-applet
+
+      # Misc
+      - git
+      - curl
+      - wget
+    state: present

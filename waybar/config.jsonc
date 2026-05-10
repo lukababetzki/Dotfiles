@@ -1,0 +1,167 @@
+// =============================================================================
+// waybar/config.jsonc
+// =============================================================================
+// Layout: left → workspaces | centre → clock | right → system tray
+// Palette mirrors sway/config
+// =============================================================================
+
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 4,
+  "exclusive": true,
+  "passthrough": false,
+
+  // -------------------------------------------------------------------------
+  // Modules — left
+  // -------------------------------------------------------------------------
+  "modules-left": ["sway/workspaces", "sway/mode", "mpris"],
+
+  // -------------------------------------------------------------------------
+  // Modules — centre
+  // -------------------------------------------------------------------------
+  "modules-center": ["clock"],
+
+  // -------------------------------------------------------------------------
+  // Modules — right
+  // -------------------------------------------------------------------------
+  "modules-right": [
+    "network",
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "battery",
+    "tray",
+    "custom/notification",
+  ],
+
+  // -------------------------------------------------------------------------
+  // Sway workspaces
+  // -------------------------------------------------------------------------
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "format": "{name}",
+  },
+
+  // -------------------------------------------------------------------------
+  // Sway mode (resize, etc.)
+  // -------------------------------------------------------------------------
+  "sway/mode": {
+    "format": "<span style='italic'>{}</span>",
+  },
+
+  // -------------------------------------------------------------------------
+  // Clock
+  // -------------------------------------------------------------------------
+  "clock": {
+    "format": "{:%a %d %b  %H:%M}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 60,
+  },
+
+  // -------------------------------------------------------------------------
+  // Network
+  // -------------------------------------------------------------------------
+  "network": {
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": " {ipaddr}",
+    "format-disconnected": "⚠ disconnected",
+    "tooltip-format-wifi": "{essid} · {signalStrength}% · {ipaddr}",
+    "interval": 30,
+    "on-click": "ghostty -e nmtui",
+  },
+
+  // -------------------------------------------------------------------------
+  // CPU
+  // -------------------------------------------------------------------------
+  "cpu": {
+    "format": " {usage}%",
+    "interval": 5,
+    "tooltip": false,
+  },
+
+  // -------------------------------------------------------------------------
+  // Memory
+  // -------------------------------------------------------------------------
+  "memory": {
+    "format": " {percentage}%",
+    "tooltip-format": "{used:0.1f}G / {total:0.1f}G",
+    "interval": 10,
+  },
+
+  // -------------------------------------------------------------------------
+  // Volume (PipeWire via PulseAudio compat)
+  // -------------------------------------------------------------------------
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " muted",
+    "format-icons": {
+      "default": ["", "", ""],
+    },
+    "on-click": "pavucontrol",
+    "tooltip": false,
+  },
+
+  // -------------------------------------------------------------------------
+  // Battery
+  // -------------------------------------------------------------------------
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "{timeTo} · {power:.1f}W",
+    "interval": 30,
+  },
+
+  // -------------------------------------------------------------------------
+  // System tray
+  // -------------------------------------------------------------------------
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8,
+  },
+
+  // -------------------------------------------------------------------------
+  // Notifications (requires swaync)
+  // -------------------------------------------------------------------------
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": " ",
+      "none": " ",
+      "dnd-notification": " ",
+      "dnd-none": " ",
+    },
+    "return-type": "json",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true,
+  },
+
+  // -------------------------------------------------------------------------
+  // Media (MPRIS — works with Spotify, Firefox, etc.)
+  // -------------------------------------------------------------------------
+  "mpris": {
+    "format": "{player_icon} {title} · {artist}",
+    "format-paused": "{player_icon} {title}",
+    "player-icons": {
+      "default": "▶",
+      "spotify": "",
+      "firefox": "",
+    },
+    "status-icons": {
+      "paused": "",
+    },
+    "max-length": 40,
+    "tooltip": false,
+  },
+}

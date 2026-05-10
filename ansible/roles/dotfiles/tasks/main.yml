@@ -1,0 +1,66 @@
+# =============================================================================
+# ansible/roles/dotfiles/tasks/main.yml
+# =============================================================================
+# Creates required directories and symlinks every config file into place.
+# Existing files are backed up before being replaced.
+# =============================================================================
+
+---
+- name: Create XDG config directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "{{ config_dir }}/sway"
+    - "{{ config_dir }}/waybar"
+    - "{{ config_dir }}/ghostty"
+    - "{{ ansible_env.HOME }}/.zsh"
+    - "{{ screenshots_dir }}"
+
+- name: Symlink sway config
+  file:
+    src: "{{ dotfiles_dir }}/sway/config"
+    dest: "{{ config_dir }}/sway/config"
+    state: link
+    force: true
+    backup: true
+
+- name: Symlink waybar config
+  file:
+    src: "{{ dotfiles_dir }}/waybar/config.jsonc"
+    dest: "{{ config_dir }}/waybar/config.jsonc"
+    state: link
+    force: true
+    backup: true
+
+- name: Symlink waybar stylesheet
+  file:
+    src: "{{ dotfiles_dir }}/waybar/style.css"
+    dest: "{{ config_dir }}/waybar/style.css"
+    state: link
+    force: true
+    backup: true
+
+- name: Symlink ghostty config
+  file:
+    src: "{{ dotfiles_dir }}/ghostty/config"
+    dest: "{{ config_dir }}/ghostty/config"
+    state: link
+    force: true
+    backup: true
+
+- name: Symlink .zshrc
+  file:
+    src: "{{ dotfiles_dir }}/zsh/.zshrc"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    state: link
+    force: true
+    backup: true
+
+- name: Clone Pure prompt
+  git:
+    repo: https://github.com/sindresorhus/pure.git
+    dest: "{{ zsh_pure_dir }}"
+    depth: 1
+    update: false

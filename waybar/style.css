@@ -1,0 +1,231 @@
+/* =============================================================================
+   waybar/style.css
+   =============================================================================
+   Palette
+   base:        #161616
+   surface:     rgba(22, 22, 22, 0.72)
+   accent:      #ccf4ef
+   accent-dim:  #8dddd5
+   text:        #fefefe
+   muted:       #888888
+   border:      #444444
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   Reset & root
+   ----------------------------------------------------------------------------- */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Aux Mono", monospace;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(22, 22, 22, 0.72);
+    color: #fefefe;
+    border-bottom: 2px solid #444444;
+}
+
+/* -----------------------------------------------------------------------------
+   General module wrapper
+   ----------------------------------------------------------------------------- */
+
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: 0 6px;
+}
+
+#workspaces,
+#mode,
+#clock,
+#network,
+#cpu,
+#memory,
+#pulseaudio,
+#battery,
+#tray,
+#mpris,
+#custom-notification {
+    padding: 0 10px;
+    color: #fefefe;
+    background: transparent;
+}
+
+/* Separator between right-side modules */
+#network,
+#cpu,
+#memory,
+#pulseaudio,
+#battery {
+    border-left: 1px solid #444444;
+}
+
+/* -----------------------------------------------------------------------------
+   Workspaces
+   ----------------------------------------------------------------------------- */
+
+#workspaces button {
+    padding: 0 8px;
+    color: #888888;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    transition:
+        color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+#workspaces button:hover {
+    color: #ccf4ef;
+    background: transparent;
+    box-shadow: none;
+}
+
+#workspaces button.focused {
+    color: #ccf4ef;
+    border-bottom: 2px solid #ccf4ef;
+}
+
+#workspaces button.urgent {
+    color: #fefefe;
+    border-bottom: 2px solid #cc4444;
+}
+
+/* -----------------------------------------------------------------------------
+   Sway mode
+   ----------------------------------------------------------------------------- */
+
+#mode {
+    color: #161616;
+    background: #ccf4ef;
+    padding: 0 10px;
+    margin: 4px 4px;
+    border-radius: 4px;
+}
+
+/* -----------------------------------------------------------------------------
+   Clock
+   ----------------------------------------------------------------------------- */
+
+#clock {
+    color: #ccf4ef;
+    font-weight: 500;
+}
+
+/* -----------------------------------------------------------------------------
+   Network
+   ----------------------------------------------------------------------------- */
+
+#network.disconnected {
+    color: #cc4444;
+}
+
+/* -----------------------------------------------------------------------------
+   CPU & memory
+   ----------------------------------------------------------------------------- */
+
+#cpu,
+#memory {
+    color: #888888;
+}
+
+#cpu.high,
+#memory.high {
+    color: #cc4444;
+}
+
+/* -----------------------------------------------------------------------------
+   Volume
+   ----------------------------------------------------------------------------- */
+
+#pulseaudio {
+    color: #888888;
+}
+
+#pulseaudio.muted {
+    color: #444444;
+}
+
+/* -----------------------------------------------------------------------------
+   Battery
+   ----------------------------------------------------------------------------- */
+
+#battery {
+    color: #888888;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #ccf4ef;
+}
+
+#battery.warning:not(.charging) {
+    color: #efcc7a;
+}
+
+#battery.critical:not(.charging) {
+    color: #cc4444;
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* -----------------------------------------------------------------------------
+   Tray
+   ----------------------------------------------------------------------------- */
+
+#tray {
+    padding: 0 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    color: #ccf4ef;
+}
+
+/* -----------------------------------------------------------------------------
+   Notifications
+   ----------------------------------------------------------------------------- */
+
+#custom-notification {
+    color: #888888;
+    padding: 0 8px;
+}
+
+#custom-notification.notification {
+    color: #ccf4ef;
+}
+
+#custom-notification.dnd-notification,
+#custom-notification.dnd-none {
+    color: #444444;
+}
+
+/* -----------------------------------------------------------------------------
+   Media (MPRIS)
+   ----------------------------------------------------------------------------- */
+
+#mpris {
+    color: #8dddd5;
+    max-width: 280px;
+}
+
+#mpris.paused {
+    color: #888888;
+}
+
+/* =============================================================================
+   end of style.css
+   ============================================================================= */

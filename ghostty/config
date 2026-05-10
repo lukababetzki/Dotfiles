@@ -1,0 +1,148 @@
+# =============================================================================
+# ghostty/config
+# =============================================================================
+# Palette
+# base:        #161616
+# surface:     rgba(22, 22, 22, 0.72)
+# accent:      #ccf4ef
+# accent-dim:  #8dddd5
+# text:        #fefefe
+# muted:       #888888
+# border:      #444444
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# Font
+# -----------------------------------------------------------------------------
+
+font-family       = Terminus
+font-size         = 12
+font-style        = Regular
+adjust-cell-width = 0
+adjust-cell-height = 2
+
+
+# -----------------------------------------------------------------------------
+# Cursor
+# -----------------------------------------------------------------------------
+
+cursor-style          = block
+cursor-style-blink    = false
+cursor-color          = #ccf4ef
+cursor-text-color     = #161616
+
+
+# -----------------------------------------------------------------------------
+# Window
+# -----------------------------------------------------------------------------
+
+background-opacity    = 0.72
+background-blur-radius = 0
+window-padding-x      = 12
+window-padding-y      = 10
+window-decoration     = false
+gtk-titlebar          = false
+
+
+# -----------------------------------------------------------------------------
+# Colours — base
+# -----------------------------------------------------------------------------
+
+background  = #161616
+foreground  = #fefefe
+
+# Normal colours (0–7)
+palette = 0=#161616
+palette = 1=#cc4444
+palette = 2=#8dddd5
+palette = 3=#efcc7a
+palette = 4=#7aaef0
+palette = 5=#c49fd8
+palette = 6=#ccf4ef
+palette = 7=#fefefe
+
+# Bright colours (8–15)
+palette = 8=#444444
+palette = 9=#d46a6a
+palette = 10=#a8ede7
+palette = 11=#f5dfa0
+palette = 12=#a0c4f5
+palette = 13=#d8b8ec
+palette = 14=#ccf4ef
+palette = 15=#fefefe
+
+
+# -----------------------------------------------------------------------------
+# Selection
+# -----------------------------------------------------------------------------
+
+selection-background = #ccf4ef
+selection-foreground = #161616
+selection-invert-fg-bg = false
+
+
+# -----------------------------------------------------------------------------
+# URLs
+# -----------------------------------------------------------------------------
+
+link-color = #ccf4ef
+
+
+# -----------------------------------------------------------------------------
+# Scrollback
+# -----------------------------------------------------------------------------
+
+scrollback-limit = 10000
+
+
+# -----------------------------------------------------------------------------
+# Bell
+# -----------------------------------------------------------------------------
+
+bell-feature = off
+
+
+# -----------------------------------------------------------------------------
+# Shell integration
+# -----------------------------------------------------------------------------
+
+shell-integration     = zsh
+shell-integration-features = cursor,sudo,title
+
+
+# -----------------------------------------------------------------------------
+# Keybindings
+# -----------------------------------------------------------------------------
+
+# New tab / window
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+n=new_window
+
+# Tab navigation
+keybind = ctrl+shift+right=next_tab
+keybind = ctrl+shift+left=previous_tab
+
+# Split panes
+keybind = ctrl+shift+d=new_split:right
+keybind = ctrl+shift+e=new_split:down
+
+# Pane navigation
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+k=goto_split:top
+keybind = ctrl+shift+j=goto_split:bottom
+
+# Font size
+keybind = ctrl+equal=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+zero=reset_font_size
+
+# Copy / paste
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+
+
+# =============================================================================
+# end of config
+# =============================================================================
